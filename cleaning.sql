@@ -82,3 +82,13 @@ FROM layoffs_staging ls2
 WHERE ls1.company = ls2.company
   AND ls1.industry IS NULL
   AND ls2.industry IS NOT NULL;
+
+SELECT * FROM layoffs_staging
+WHERE total_laid_off IS NULL AND percentage_laid_off IS NULL
+ORDER BY country, location;
+
+DELETE FROM layoffs_staging
+WHERE total_laid_off IS NULL AND percentage_laid_off IS NULL;
+
+ALTER TABLE layoffs_staging
+DROP COLUMN row_num;
